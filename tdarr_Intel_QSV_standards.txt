@@ -1,0 +1,33 @@
+### Tdarr Processing Standard v2.0
+
+1. Metadata & Container Standardization
+- Target Container: Standardize all processed video files to .mkv to support advanced track-level tagging.
+- Tag Generation: Where title, release year, or episode data is missing, extract and inject metadata using filename parsing rules. 
+- Chapter Injection: Detect missing chapter metadata and automatically inject chapter markers at 5-minute intervals.
+
+2. Video Bitrate Limits (Target Encoding Thresholds)
+Files exceeding these maximum video bitrates will trigger a hardware-accelerated HEVC/H.265 transcode using the GPU to compress the video track to the target rate:
+- 360p: 1 Mbps
+- 480p (SD): 2 Mbps
+- 720p (HD): 3 Mbps
+- 1080p (Full HD): 5 Mbps
+- 1440p (2K QHD): 10 Mbps (Allow +10 Mbps headroom if retaining TrueHD/DTS-HD MA audio)
+- 4K UHD: 25 Mbps (Allow +25 Mbps headroom if retaining TrueHD/DTS-HD MA audio)
+- 8K UHD: 50 Mbps (Allow +25 Mbps headroom if retaining TrueHD/DTS-HD MA audio)
+
+3. Video Color Space (HDR/SDR)
+- 4K and Above: Preserve existing HDR/Dolby Vision metadata.
+- 1080p and Below: If HDR metadata is detected, execute a hardware-accelerated HDR-to-SDR tonemap to ensure proper color rendering on non-HDR displays.
+
+4. Audio Track Processing
+- Language Culling: Remove all non-English audio streams from the file.
+- High-Resolution Rules (1440p, 4K, 8K): Retain lossless 7.1/5.1 audio formats (Dolby TrueHD, DTS-HD MA) to support home theatre passthrough.
+- Standard-Resolution Rules (1080p and below):
+  - If MP2 or WMA is detected, recompress to AAC 2.0 (Stereo).
+  - If Uncompressed PCM, WAV, or FLAC is detected, recompress to AAC 2.0 (Stereo).
+  - If multi-channel DTS 5.1 is detected, compress to AC3 (Dolby Digital).
+  - If MP3 or AAC is detected, bypass audio processing (do nothing).
+
+5. Subtitle Processing
+- Language Culling: Remove all non-English subtitle tracks, ensuring only language=eng remains.
+- Forced Subtitles: Ensure English "forced" subtitle tracks are retained and properly flagged within the MKV container.

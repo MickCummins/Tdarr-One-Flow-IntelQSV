@@ -1,4 +1,10 @@
-## Tdarr - One Flow - To Rule Them All
+## Tdarr - One Flow - To Rule Them All - Intel QSV
+
+Changes from upstream project
+1. My specific hardware is Intel Arc A380 GPU.  The compression mechanism will be Intel QuickSync Video (QSV) utilizing HEVC (H.265) with advanced rate control (-extbrc 1 -look_ahead 1 -look_ahead_depth 100).
+2. Opus is unfortunately incompatible with my Home Theatre equipment, so I will handle that differently.  If converting AAC for stereo, AC3 for 5.1 probably, but is the stream is already a lossy (i.e. mp3, aac, etc) conversion could massively muddy the audio.  Uncompressed PCM, WAV, AIFF, or Flac, MP2, WMA, or DTS 5.1 should be converted.
+3. Strip non-english sub-titles and audio tracks.
+4. Update the original readme to changes I have made and tested fully.
 
 Goal to have One Flow (set of flows) to Rule all your Media!
 
