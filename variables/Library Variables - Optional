@@ -1,0 +1,6 @@
+If not defined, the default is "false" (disabled)
+disable_vbr = true # Disable Primary VBR encoding Method
+disable_cq = true # Disable Fallback encoding method
+disable_video = true # Optional - Only needed if you want to disable video processing - Set to True
+do_hevc = true # process hevc?
+encoder = nvenc/qsv/amf/vaapi/cpu - Override Encoder Autodetect and manually set what encoder to use (currently only nvenc/qsv/cpu work)

@@ -1,0 +1,42 @@
+**1. Install Base System Dependencies**
+Debian 13 (Trixie) requires core build tools and network libraries installed via the package manager.
+
+bash
+apt update
+apt install -y git build-essential cmake libcurl4-openssl-dev zlib1g-dev
+
+**2. Install the Latest Rust Toolchain**
+Debian's default `rustc` package (1.85.1) is too old for CCExtractor's 1.87.0 minimum requirement. The toolchain must be installed directly via the official `rustup` script.
+
+bash
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+source "$HOME/.cargo/env"
+
+**3. Compile GPAC from Source**
+The `libgpac-dev` package is obsolete in Debian 13 repositories. The framework must be compiled manually from GitHub so CCExtractor can process MP4 containers.
+
+bash
+cd ~
+git clone https://github.com/gpac/gpac.git
+cd gpac
+./configure
+make -j$(nproc)
+make install
+ldconfig
+
+**4. Compile CCExtractor from Source**
+With all dependencies in place, CCExtractor is cloned and compiled using CMake pointed at its `src/` directory.
+
+bash
+cd ~
+git clone https://github.com/CCExtractor/ccextractor.git
+cd ccextractor
+mkdir build && cd build
+cmake ../src/
+make -j$(nproc)
+
+**5. Install the Binary**
+The compiled executable is moved to the system path so applications like Tdarr can access it globally.
+
+bash
+cp ccextractor /usr/local/bin/

@@ -1,0 +1,19 @@
+{
+  "serverPort": "8266",
+  "webUIPort": "8265",
+  "serverIP": "0.0.0.0",
+  "serverBindIP": false,
+  "serverDualStack": false,
+  "handbrakePath": "/usr/bin/HandBrakeCLI",
+  "ffmpegPath": "/usr/bin/ffmpeg",
+  "logLevel": "INFO",
+  "mkvpropeditPath": "/usr/bin/mkvpropedit",
+  "ccextractorPath": "/usr/local/bin/ccextractor",
+  "openBrowser": true,
+  "cronPluginUpdate": "",
+  "auth": true,
+  "authSecretKey": "tsec_XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+  "maxLogSizeMB": 10,
+  "seededApiKey": "tapi_XXXXXXXXX",
+  "jobReportsPath": ""
+}

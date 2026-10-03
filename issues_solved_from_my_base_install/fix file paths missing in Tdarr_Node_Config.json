@@ -1,0 +1,25 @@
+{
+  "nodeName": "oddball-ox",
+  "serverURL": "http://192.168.1.102:8266",
+  "serverIP": "0.0.0.0",
+  "serverPort": "8266",
+  "handbrakePath": "/usr/bin/HandBrakeCLI",
+  "ffmpegPath": "/usr/bin/ffmpeg",
+  "mkvpropeditPath": "/usr/bin/mkvpropedit",
+  "ccextractorPath": "/usr/local/bin/ccextractor",
+  "pathTranslators": [
+    {
+      "server": "",
+      "node": ""
+    }
+  ],
+  "nodeType": "mapped",
+  "unmappedNodeCache": "/opt/tdarr/unmappedNodeCache",
+  "logLevel": "INFO",
+  "priority": -1,
+  "cronPluginUpdate": "",
+  "apiKey": "tapi_XXXXXXXXX",
+  "maxLogSizeMB": 10,
+  "pollInterval": 2000,
+  "startPaused": false
+}
