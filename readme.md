@@ -1,5 +1,6 @@
 ## Tdarr - One Flow - To Rule Them All - Intel QSV
 
+VERY BETA - DO NOT TOUCH YET
 Changes from upstream project
 1. My specific hardware is Intel Arc A380 GPU.  The compression mechanism will be Intel QuickSync Video (QSV) utilizing HEVC (H.265) with advanced rate control (-extbrc 1 -look_ahead 1 -look_ahead_depth 100).
 2. Opus is unfortunately incompatible with my Home Theatre equipment, so I will handle that differently.  If converting AAC for stereo, AC3 for 5.1 probably, but is the stream is already a lossy (i.e. mp3, aac, etc) conversion could massively muddy the audio.  Uncompressed PCM, WAV, AIFF, or Flac, MP2, WMA, or DTS 5.1 should be converted.
